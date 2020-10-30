@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <TextView
+        android:id="@id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:paddingEnd="10dp"
+        android:textStyle="normal"
+        android:textSize="@dimen/normal_text_size"
+        android:ellipsize="end"
+        tools:text="item name"
+        android:textColor="@color/text_dark"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/normal_margin"/>
+
+
+    <View
+        android:id="@+id/item_half_hr"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorUnderline"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@id/title"
+        android:layout_marginStart="16dp"/>
+
+    <View
+        android:visibility="visible"
+        android:id="@+id/item_full_hr"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorUnderline"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

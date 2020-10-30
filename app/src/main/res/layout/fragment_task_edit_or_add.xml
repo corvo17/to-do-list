@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorBlue"
+        android:id="@+id/top_bar"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/back_btn"
+            android:layout_width="@dimen/back_button"
+            android:layout_height="@dimen/back_button"
+            android:padding="12dp"
+            android:layout_alignParentStart="true"
+            app:srcCompat="@drawable/ic_arrow_left"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/add_card_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_task"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/medium_text_size"
+            android:textAlignment="center"
+            android:layout_marginEnd="@dimen/back_button"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_done"
+            android:layout_width="@dimen/back_button"
+            android:layout_height="@dimen/back_button"
+            android:padding="12dp"
+            android:layout_marginEnd="@dimen/back_button"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:tint="@color/colorWhite"
+            app:srcCompat="@drawable/ic_done"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="@dimen/back_button"
+            android:layout_height="@dimen/back_button"
+            android:padding="12dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:tint="@color/colorWhite"
+            app:srcCompat="@drawable/ic_delete"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvWhatsToDO"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/what_is_to_do"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/medium_text_size"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/normal_margin"
+
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/etTaskName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/enter_task"
+        android:backgroundTint="@color/colorBlue"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/normal_margin"/>
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/medium_text_size"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/normal_margin"
+
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/enter_description"
+        android:backgroundTint="@color/colorBlue"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/normal_margin"/>
+
+    <TextView
+        android:id="@+id/tvTaskDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/task_date"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/medium_text_size"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/large_margin"
+        android:layout_marginEnd="@dimen/normal_margin" />
+
+    <LinearLayout
+        android:id="@+id/calendarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/normal_margin">
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/task_date_hint"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/mid_marginn" />
+
+        <ImageView
+            android:id="@+id/imgCalendar"
+            android:layout_width="@dimen/back_button"
+            android:layout_height="@dimen/back_button"
+            android:padding="12dp"
+            android:src="@drawable/ic_calendar" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/timeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/normal_margin">
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/task_date_hint"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/mid_marginn" />
+
+        <ImageView
+            android:layout_width="@dimen/back_button"
+            android:layout_height="@dimen/back_button"
+            android:padding="12dp"
+            android:src="@drawable/ic_watch" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/frequency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/frequency"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/medium_text_size"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/large_margin"
+        android:layout_marginEnd="@dimen/normal_margin" />
+    <LinearLayout
+        android:id="@+id/frequencyContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/normal_margin">
+        <TextView
+            android:id="@+id/tvFrequency"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/task_date_hint"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/mid_marginn" />
+
+        <ImageView
+            android:layout_width="@dimen/back_button"
+            android:layout_height="@dimen/back_button"
+            android:padding="12dp"
+            android:src="@drawable/ic_repeat" />
+
+    </LinearLayout>
+</LinearLayout>

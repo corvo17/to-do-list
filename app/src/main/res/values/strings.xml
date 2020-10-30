@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ToDoList</string>
+
+    <string name="something_get_error">something error</string>
+    <string name="what_is_to_do">What is to do?</string>
+    <string name="description">Description</string>
+    <string name="task_date">Task date and time</string>
+    <string name="frequency">Frequency</string>
+    <string name="task_date_hint">Task date not set</string>
+    <string name="add_task">Add task</string>
+    <string name="edit_task">Edit task</string>
+    <string name="enter_task">Enter task here</string>
+    <string name="enter_description">Enter what\'s to be done</string>
+    <string name="missed_tasks">Missed tasks</string>
+    <string name="finished_tasks">Finished tasks</string>
+    <string name="active_tasks">Active tasks</string>
+    <string name="choose_frequency">Select frequency of the task</string>
+    <string name="task_name_required">Task name is required!</string>
+    <string name="all_tasks">All tasks</string>
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/normal_margin"
+    android:layout_marginStart="@dimen/normal_margin"
+    android:layout_marginBottom="@dimen/small_margin"
+    app:cardCornerRadius="12dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgDone"
+            android:layout_width="@dimen/back_button"
+            android:layout_height="@dimen/back_button"
+            android:padding="@dimen/padding_small"
+            android:src="@drawable/ic_uncheck"
+
+            android:layout_marginStart="@dimen/small_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/taskName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/medium_text_size"
+            tools:text="Study"
+
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginStart="@dimen/tiny_margin"
+            android:layout_marginEnd="@dimen/tiny_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgDone"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/normal_text_size"
+            tools:text="What you can do for your future is do your best right now!"
+
+            android:layout_marginTop="@dimen/tiny_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            app:layout_constraintTop_toBottomOf="@+id/taskName"
+            app:layout_constraintStart_toStartOf="@+id/taskName"
+            app:layout_constraintEnd_toEndOf="@id/taskName"/>
+
+        <TextView
+            android:id="@+id/dateAndTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorUnderline"
+            android:textSize="@dimen/small_text_size"
+            tools:text="Yesterday, 9:45 PM"
+
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+            app:layout_constraintStart_toStartOf="@+id/tvDescription"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tvDescription"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

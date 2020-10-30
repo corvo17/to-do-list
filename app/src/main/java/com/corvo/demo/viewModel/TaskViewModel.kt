@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel
 import com.corvo.demo.db.LocalDB
 import com.corvo.demo.db.TaskDto
 import com.corvo.demo.helper.Constants
-import com.corvo.demo.helper.MyReciever
+import com.corvo.demo.reciever.MyReciever
 import com.corvo.demo.helper.PrefsUtil
 import com.corvo.demo.helper.TaskStatus
 import kotlinx.coroutines.CoroutineScope
@@ -248,6 +248,7 @@ class TaskViewModel(private val localDB: LocalDB, private val pref: PrefsUtil, v
 
                            Log.i("inserterTasks", "fuckkk")
                        isLoading.value = false
+                           loadTaskList()
 
                    }catch (exception: Exception){
                        isLoading.value = false
@@ -260,15 +261,15 @@ class TaskViewModel(private val localDB: LocalDB, private val pref: PrefsUtil, v
 
     private fun setNotifications(task: TaskDto){
         CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val intent = Intent(context, MyReciever::class.java)
+                intent.putExtra(Constants.INTENT_TITLE, task.taskName)
+                intent.putExtra(Constants.INTENT_DESCRIPTION, task.description)
+                intent.putExtra(Constants.INTENT_ID, task.taskId)
+                val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
 
-            val intent = Intent(context, MyReciever::class.java)
-            intent.putExtra(Constants.INTENT_TITLE, task.taskName)
-            intent.putExtra(Constants.INTENT_DESCRIPTION, task.description)
-            intent.putExtra(Constants.INTENT_ID, task.taskId)
-            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
 
-
-            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 if (task.updatedDate == null){
                     val alarmTime = task.updatedDate?:0 + task.frequency * 60L * 60L * 1000L
                     val alarmInterval = task.frequency * 60L * 60L * 1000L
@@ -292,29 +293,31 @@ class TaskViewModel(private val localDB: LocalDB, private val pref: PrefsUtil, v
 
                 }
 
-            val sourceFormat: DateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
-            val dateAsString = task.date.replace(".", "/")
-            Log.i("deformatedToDate", dateAsString)
-            val date: Date? = sourceFormat.parse(dateAsString)
+                val sourceFormat: DateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+                val dateAsString = task.date.replace(".", "/")
+                Log.i("deformatedToDate", dateAsString)
+                val date: Date? = sourceFormat.parse(dateAsString)
 
-            val endDateCal = Calendar.getInstance()
-            endDateCal.time = formatDateWithName(task.date)
-            val alarmTime =endDateCal.timeInMillis + task.time.substringBefore(":").toLong() * 60L * 60L * 1000L +
-                    task.time.substringAfter(":").toLong() * 60L * 1000L
+                val endDateCal = Calendar.getInstance()
+                endDateCal.time = formatDateWithName(task.date)
+                val alarmTime =endDateCal.timeInMillis + task.time.substringBefore(":").toLong() * 60L * 60L * 1000L +
+                        task.time.substringAfter(":").toLong() * 60L * 1000L
 
-            Log.i("LeftTimeMilliseconds", alarmTime.toString())
-            Log.i("LeftTimeMilliseconds", System.currentTimeMillis().toString())
-            Log.i("LeftTimeMilliseconds", (alarmTime - System.currentTimeMillis()).toString())
-
-
-            alarmManager.setRepeating(
-                AlarmManager.RTC_WAKEUP,
-                alarmTime,
-                 60000,
-                pendingIntent
-            )
+                Log.i("LeftTimeMilliseconds", alarmTime.toString())
+                Log.i("LeftTimeMilliseconds", System.currentTimeMillis().toString())
+                Log.i("LeftTimeMilliseconds", (alarmTime - System.currentTimeMillis()).toString())
 
 
+                alarmManager.set(
+                    AlarmManager.RTC_WAKEUP,
+                    alarmTime,
+                    pendingIntent
+                )
+
+
+            }catch (exception: java.lang.Exception){
+                errorMessage.value = exception.message
+            }
         }
     }
     fun formatDateWithName(date: String): Date? {

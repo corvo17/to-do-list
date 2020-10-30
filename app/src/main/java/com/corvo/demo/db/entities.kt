@@ -19,8 +19,8 @@ data class TaskDto(
     var status: String,
     var frequency: Int,
     var createdDate: Long,
-    var updatedDate: Long? = null
-){
+    var updatedDate: Long? = null,
+
     @PrimaryKey(autoGenerate = true)
     var taskId: Int? = null
-}
+)

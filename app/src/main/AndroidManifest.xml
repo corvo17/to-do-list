@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.corvo.demo">
-
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -18,8 +19,9 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".helper.DemoNotificationService"/>
-        <receiver android:name=".helper.MyReciever"
+        <service android:name=".reciever.DemoNotificationService"
+            android:exported="false" />
+        <receiver android:name=".reciever.MyReciever"
             android:enabled="true"
             android:exported="false"/>
     </application>

@@ -43,7 +43,8 @@ class TaskAddOrEditFragment : BaseFragment(), SupportedDatePickerDialog.OnDateSe
             }
 
             calendarContainer.setOnClickListener { view ->
-                SupportedDatePickerDialog(it,R.style.SpinnerDatePickerDialogTheme,this,2020,11,1).show()
+                val calendar = Calendar.getInstance()
+                SupportedDatePickerDialog(it,R.style.SpinnerDatePickerDialogTheme,this,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show()
             }
 
             timeContainer.setOnClickListener { view ->

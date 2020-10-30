@@ -29,7 +29,7 @@ class App : Application(), KodeinAware {
         super.onCreate()
         localDB = LocalDB(this)
         pref = PrefsUtil(this)
-        createNotificationCahnnel()
+        //createNotificationCahnnel()
     }
 
     private fun createNotificationCahnnel() {

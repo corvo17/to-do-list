@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.corvo.demo.helper.Constants
 
-@Database(entities = [TaskDto::class], version = 7, exportSchema = false)
+@Database(entities = [TaskDto::class], version = 9, exportSchema = false)
 abstract class LocalDB : RoomDatabase(){
 
     abstract fun getTaskDao(): TaskDao

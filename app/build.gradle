@@ -34,7 +34,7 @@ android {
             debuggable = true
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "olam-courier ${variant.versionName}-${variant.buildType.name}.apk"
+                    outputFileName = "to-do-lis ${variant.versionName}-${variant.buildType.name}.apk"
                 }
             }
         }
